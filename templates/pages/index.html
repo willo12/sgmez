@@ -1,0 +1,39 @@
+{% extends "pages/richtextpage.html" %}
+{% load mezzanine_tags blog_tags i18n future %}
+{% block main_span %}col-sm-8 col-md-9{% endblock %}
+{% block main %}
+<!--
+This template is provided as a custom template for the homepage, for
+when it is configured as an editable page in the navigation tree. Feel
+free to modify it.
+-->
+{{ block.super }}
+
+<hr/>
+{% block blog_recent_posts %}
+{% blog_recent_posts 5 as recent_posts %}
+{% if recent_posts %}
+<h3>{% trans "Recent Posts" %}</h3>
+<ul class="unstyled recent-posts">
+{% for recent_post in recent_posts %}
+<li><a href="{{ recent_post.get_absolute_url }}">{{ recent_post.title }}</a></li>
+{% endfor %}
+</ul>
+{% endif %}
+{% endblock %}
+
+{% endblock %}
+
+{% block right_panel_span %}col-sm-3 col-md-3{% endblock %}
+{% block right_panel %}
+    {% nevercache %}
+    {% include "includes/user_panel.html" %}
+    {% endnevercache %}
+    <div class="panel">
+
+    </div>
+{% endblock %}
+
+
+
+

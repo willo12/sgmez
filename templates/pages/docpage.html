@@ -1,0 +1,18 @@
+{% extends "pages/page.html" %}
+
+{% load pages_tags mezzanine_tags %}
+
+{% block main %}{{ block.super }}
+
+{% editable page.docpage.content %}
+{{ page.docpage.content|richtext_filters|safe }}
+{% endeditable %}
+
+
+{% if page.docpage.add_toc %}
+<hr/>
+<div class="container">
+    {% page_menu "pages/menus/footer_tree.html" page %}
+</div>
+{% endif %}
+{% endblock %}
