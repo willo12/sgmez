@@ -1,0 +1,3 @@
+[submodule "sgdata"]
+	path = sgdata
+	url = https://github.com/willo12/sgdata
