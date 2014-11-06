@@ -1,5 +1,5 @@
 {% extends "pages/richtextpage.html" %}
-{% load mezzanine_tags blog_tags i18n future %}
+{% load mezzanine_tags blog_tags i18n future staticfiles %}
 {% block main_span %}col-sm-8 col-md-9{% endblock %}
 {% block main %}
 <!--
@@ -8,6 +8,38 @@ when it is configured as an editable page in the navigation tree. Feel
 free to modify it.
 -->
 {{ block.super }}
+
+
+    <div class="show_save" style="display: none;">false</div>
+
+
+    
+
+<script src="{% static "js/sgweb.js" %}"> </script>
+<script type="text/javascript">
+
+var cleanConf=new figConfig(['Submit','project','cycle3D'],[false,'my_project',0])
+
+var newFigDiv=d3.select("body").append("div")
+
+$(document).ready(function(){
+var nfBut=d3.select(".newButDiv")
+
+if (nfBut!=='undefined'){
+	nfBut.append("button")
+    .attr("href","")
+    .attr("type","button")
+    .attr("id","addbut")
+    .attr("class","btn btn-default")
+    .text("Create New Figure")
+    .on("click", function(){createFig(newFigDiv,cleanConf)});
+}
+
+    scanPage({% if project %} '{{ my_project }}'  {% endif %})
+})
+
+</script>
+
 
 <hr/>
 {% block blog_recent_posts %}
