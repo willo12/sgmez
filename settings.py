@@ -257,6 +257,7 @@ INSTALLED_APPS = (
     "mezzanine.accounts",
     #"mezzanine.mobile",
     "mezzanine_protectedpages",
+    "request",
 )
 
 # List of processors used by RequestContext to populate the context.
@@ -296,6 +297,7 @@ MIDDLEWARE_CLASSES = (
     # "mezzanine.core.middleware.SSLRedirectMiddleware",
     "mezzanine.pages.middleware.PageMiddleware",
     "mezzanine.core.middleware.FetchFromCacheMiddleware",
+    "request.middleware.RequestMiddleware",
 )
 
 # Store these package names here as they may change in the future since
